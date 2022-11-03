@@ -3,6 +3,17 @@
         <div id="loginandregister">
         <!-- 用户登录标单 -->
         <div id="login" >
+          <transition
+                    name="animate__animated animate__bounce"
+                    enter-active-class="animate__fadeIn"
+                    leave-active-class="animate__fadeOut"
+                    appear
+            >
+             <div id="title" v-show="isShow" >
+                LOGIN
+            </div>
+            </transition>
+           
         <el-form :model="UserForm"  style="width: 300px;">
   <el-form-item label="账号" prop="username">
     <el-input type="text" v-model="UserForm.username" placeholder="请输入用户名" ></el-input>
@@ -11,23 +22,31 @@
     <el-input type="password" v-model="UserForm.password" placeholder="请输入密码" ></el-input>
   </el-form-item>
    <el-button type="primary" @click="userlogin()">登录</el-button>
-   <el-button @click="resetForm('ruleForm')">重置</el-button>
+   <el-button @click="resetForm()">重置</el-button>
 </el-form>
+       
 </div>
-    <!-- 管理员登录表单 -->
+    <!-- 注册表单 -->
     <div id="register">
-   <el-form :model="ManForm" status-icon :rules="rules" style="width: 300px;">
+      <transition
+                    name="animate__animated animate__bounce"
+                    enter-active-class="animate__fadeIn"
+                    leave-active-class="animate__fadeOut"
+                    appear
+            >
+   <el-form :model="RegisterForm" status-icon :rules="rules" style="width: 300px;">
     <el-form-item label="账号" prop="username" >
-    <el-input type="text" v-model="ManForm.username" placeholder="请输入用户名" ></el-input>
+    <el-input type="text" v-model="RegisterForm.username" placeholder="请输入用户名" ></el-input>
   </el-form-item>
   <el-form-item label="密码" prop="pass">
-    <el-input type="password" v-model="ManForm.pass" placeholder="请输入密码"   ></el-input>
+    <el-input type="password" v-model="RegisterForm.pass" placeholder="请输入密码"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-    <el-button @click="resetForm('ruleForm')">重置</el-button>
+    <el-button type="primary" @click="submitForm()">提交</el-button>
+    <el-button @click="resetForm()">重置</el-button>
   </el-form-item>
 </el-form>
+</transition>
 </div>
  <!-- 移动滑块 -->
 <div id="aaa" :style="{
@@ -38,9 +57,16 @@ borderBottomRightRadious:styleObj.borderBottomRightRadious,
 right:styleObj.right,
 }" >
 <div id="aa" v-show="isShow" style="display:flex;align-items: center;justify-content: center;flex-direction: column;height: 200px;">
-    管理员页面
+    没有账户？加入我们！
     <div id="a" style="flex:2;display:flex;align-items: center;justify-content: center;">
-    <el-button type="primary" round @click="ChangToMan()">管理员登录</el-button>
+      <transition
+                    name="animate__animated animate__bounce"
+                    enter-active-class="animate__rubberBand"
+                    leave-active-class="animate__rubberBand"
+                    appear
+            >
+    <el-button type="primary" round @click="ChangToMan()">用户注册</el-button>
+    </transition>
     </div>
 </div>
 <div id="a1" v-show="!isShow" style="display:flex;align-items: center;justify-content: center;flex-direction: column;height: 200px;">
@@ -48,13 +74,13 @@ right:styleObj.right,
     <div id="a2" style="flex:2;display:flex;align-items: center;justify-content: center;">
     <el-button type="primary" round @click="ChangToUser()">用户登录</el-button>
     </div>
-</div>
-</div>
-</div>
+    </div>
+  </div>
+ </div>
 </div>
 </template>
 <script>
-import {userloginApi}  from '@/api/login'
+import 'animate.css'
   export default {
     data() {
       var validatePass = (rule, value, callback) => {
@@ -78,10 +104,10 @@ import {userloginApi}  from '@/api/login'
       };
       return { 
         UserForm:{
-            username:'123',
-            password:'123'
+            username:'',
+            password:''
         },
-        ManForm: {
+        RegisterForm: {
           username:'',
           pass: '',
           checkPass: '',
@@ -167,9 +193,25 @@ import {userloginApi}  from '@/api/login'
 }
 #login{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 #register{
     display: flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-size: 25px;
+  font-weight: bold;
+
 }
 #aaa{
     width: 300px;
