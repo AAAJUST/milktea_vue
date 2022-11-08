@@ -21,6 +21,16 @@ export default new VueRouter({
             component: () =>
             import ("../components/index.vue"),
            
+        },
+        {
+            path: '/AllGoods',
+            component: () =>
+            import ("../components/Goods/AllGoods.vue"),
+        },
+        {
+            path: '/Add',
+            component: () =>
+            import ("../components/Goods/add.vue"),
         }
     ]
     })
