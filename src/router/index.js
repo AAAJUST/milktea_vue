@@ -20,7 +20,12 @@ export default new VueRouter({
             name:'index',
             component: () =>
             import ("../components/index.vue"),
-           
+            children: [{
+                    path:'/dindan',
+                    name:'dindan',
+                    component: ()=>
+                    import("../basicCompents/dindan.vue")
+                }]
         }
     ]
     })
