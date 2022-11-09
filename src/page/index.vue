@@ -6,7 +6,7 @@
     
 </template>
 <script>
-import leftNav from '@/basicCompents/leftNav.vue';
+import leftNav from '@/components/leftNav.vue';
 export default {
         name: 'index',
         components:{leftNav},

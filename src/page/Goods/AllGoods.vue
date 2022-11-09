@@ -121,8 +121,8 @@
 </template>
 
 <script>
-import {getGoodsPage}  from '@/api/goods'
-import {deleteGoods}  from '@/api/goods'
+// import {getGoodsPage}  from '@/api/goods'
+// import {deleteGoods}  from '@/api/goods'
 export default {
     name:'AllGoods',
     data() {

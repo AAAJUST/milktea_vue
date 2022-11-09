@@ -13,29 +13,29 @@ export default new VueRouter({
             path: '/login',
             name: 'login',
             component: () =>
-                import ("../components/login.vue")
+                import ("../page/login.vue")
         },
         {
             path:'/index',
             name:'index',
             component: () =>
-            import ("../components/index.vue"),
+            import ("../page/index.vue"),
 
             children: [{
                     path:'/dindan',
                     name:'dindan',
                     component: ()=>
-                    import("../basicCompents/dindan.vue")
+                    import("../components/dindan.vue")
                 },
                 {
                 path:'AllGoods', //此处一定不要写：/news
                 component: () =>
-                import ("../components/Goods/AllGoods.vue"),
+                import ("../page/Goods/AllGoods.vue"),
             },
             {
                 path:'Add',//此处一定不要写：/message
                 component: () =>
-            import ("../components/Goods/add.vue"),
+            import ("../page/Goods/add.vue"),
             }
             ]
         }

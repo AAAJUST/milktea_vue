@@ -40,9 +40,9 @@
 </template>
 
 <script>
-import {queryGoodsById}  from '@/api/goods'
-import {addGoods}  from '@/api/goods'
-import {editGoods}  from '@/api/goods'
+// import {queryGoodsById}  from '@/api/goods'
+// import {addGoods}  from '@/api/goods'
+// import {editGoods}  from '@/api/goods'
 export default {
     data() {
       return {
