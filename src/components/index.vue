@@ -12,8 +12,15 @@ export default {
         components:{leftNav},
         data(){
             return{
-                
             }
-          }
+          },
+        methods: {
+            routerevent(name,st){
+            this.$router.push({
+                path:name,
+                query: {id:st }
+            })
+            }
+        },
     }
 </script>
