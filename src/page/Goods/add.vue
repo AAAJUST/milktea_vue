@@ -100,7 +100,7 @@ export default {
                     
       },
       goBack(){{
-        this.$parent.routerevent("/AllGoods");
+        this.$parent.routerevent("/index/AllGoods");
       }},
       handleRemove(file, fileList) {
         console.log(file, fileList);

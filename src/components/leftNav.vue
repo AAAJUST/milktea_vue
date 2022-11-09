@@ -25,13 +25,13 @@
       <el-menu-item index="1-4-1">选项1</el-menu-item>
     </el-submenu>
   </el-submenu>
-  <el-menu-item index="2" >
+  <el-menu-item index="2"  @click="addFoodtype('/index/AllGoods')">
     <i class="el-icon-menu"></i>
     <span slot="title">商品查询</span>
   </el-menu-item>
-  <el-menu-item index="3" disabled>
+  <el-menu-item index="3" @click="addFoodtype('/index/AllTypes')">
     <i class="el-icon-document"></i>
-    <span slot="title">导航三</span>
+    <span slot="title">分类查询</span>
   </el-menu-item>
   <el-menu-item index="4">
     <i class="el-icon-setting"></i>
@@ -49,40 +49,33 @@
 </template>
 
 <script>
-import router from '@/router';
-
  
   export default {
-    name: "leftNav",
+    name:"leftNav",
     data() {
-        return {
-            isCollapse: true,
-            Goodsname:"/AllGoods"
-        };
+      return {
+        isCollapse: true,
+        Goodsname:"/AllGoods"
+      };
     },
     methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
-        },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
-        }
-    },
-    components: { router }
-}
+      handleOpen(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleClose(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      addFoodtype(st){
+              console.log(this.$parent);
+              this.$parent.routerevent(st,'');
+          },
+    }
+  }
 </script>
 
 <style>
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
-    float: left;
-  }
-  #right-view{
-     width: 900px;
-     height: 500px;
-     float: right;
-     background-color: aquamarine;
-
   }
 </style>

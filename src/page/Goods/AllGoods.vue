@@ -67,7 +67,7 @@
       width="120">
     </el-table-column>
     <el-table-column
-      prop="time"
+      prop="updateTime"
       label="最后更改时间"
       width="240">
     </el-table-column>

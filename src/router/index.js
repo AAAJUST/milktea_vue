@@ -20,7 +20,6 @@ export default new VueRouter({
             name:'index',
             component: () =>
             import ("../page/index.vue"),
-
             children: [{
                     path:'/dindan',
                     name:'dindan',
@@ -31,13 +30,18 @@ export default new VueRouter({
                 path:'AllGoods', //此处一定不要写：/news
                 component: () =>
                 import ("../page/Goods/AllGoods.vue"),
-            },
-            {
-                path:'Add',//此处一定不要写：/message
+                },
+                {
+                path:'Add',
                 component: () =>
-            import ("../page/Goods/add.vue"),
-            }
-            ]
-        }
+                import ("../page/Goods/add.vue"),
+                },
+                {
+                path:'AllTypes',
+                component: () =>
+                import ("../components/Type/AllTypes.vue"),
+
+                     }]  
+        },
       ]
     })
