@@ -54,7 +54,6 @@
     data() {
       return {
         isCollapse: true,
-        Goodsname:"/AllGoods"
       };
     },
     methods: {

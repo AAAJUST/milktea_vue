@@ -121,8 +121,8 @@
 </template>
 
 <script>
-// import {getGoodsPage}  from '@/api/goods'
-// import {deleteGoods}  from '@/api/goods'
+import {getGoodsPage}  from '@/api/goods'
+import {deleteGoods}  from '@/api/goods'
 export default {
     name:'AllGoods',
     data() {
@@ -206,11 +206,11 @@ export default {
           },
           addFoodtype(st){
             if(st === '/add'){
-              console.log(this.$parent);
-              this.$parent.routerevent('/index/add','');
+              console.log(this.$parent.$parent);
+              this.$parent.$parent.routerevent('/index/Add','');
             }else{
               console.log(st);
-              this.$parent.routerevent('/index/add',st)
+              this.$parent.$parent.routerevent('/index/Add',st)
             }
           },
           getImage (image) {
