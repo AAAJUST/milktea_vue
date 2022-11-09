@@ -41,7 +41,8 @@ export default new VueRouter({
                 component: () =>
                 import ("../page/Type/AllTypes.vue"),
 
-                     }]  
+             }
+            ]  
         },
       ]
     })
