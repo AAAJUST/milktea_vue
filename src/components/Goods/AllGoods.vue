@@ -206,10 +206,11 @@ export default {
           },
           addFoodtype(st){
             if(st === '/add'){
-              this.$parent.routerevent(st,'');
+              console.log(this.$parent);
+              this.$parent.routerevent('/index/add','');
             }else{
               console.log(st);
-              this.$parent.routerevent('/add',st)
+              this.$parent.routerevent('/index/add',st)
             }
           },
           getImage (image) {

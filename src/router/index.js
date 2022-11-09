@@ -20,17 +20,19 @@ export default new VueRouter({
             name:'index',
             component: () =>
             import ("../components/index.vue"),
+            children:[ //通过children配置子级路由
+            {
+                path:'AllGoods', //此处一定不要写：/news
+                component: () =>
+                import ("../components/Goods/AllGoods.vue"),
+            },
+            {
+                path:'Add',//此处一定不要写：/message
+                component: () =>
+            import ("../components/Goods/add.vue"),
+            }
+        ]
            
         },
-        {
-            path: '/AllGoods',
-            component: () =>
-            import ("../components/Goods/AllGoods.vue"),
-        },
-        {
-            path: '/Add',
-            component: () =>
-            import ("../components/Goods/add.vue"),
-        }
     ]
     })
