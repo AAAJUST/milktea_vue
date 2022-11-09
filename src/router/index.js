@@ -27,7 +27,7 @@ export default new VueRouter({
                     import("../components/dindan.vue")
                 },
                 {
-                path:'AllGoods', //此处一定不要写：/news
+                path:'AllGoods',
                 component: () =>
                 import ("../page/Goods/AllGoods.vue"),
                 },
@@ -39,7 +39,7 @@ export default new VueRouter({
                 {
                 path:'AllTypes',
                 component: () =>
-                import ("../components/Type/AllTypes.vue"),
+                import ("../page/Type/AllTypes.vue"),
 
                      }]  
         },
