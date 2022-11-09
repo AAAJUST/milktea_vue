@@ -34,6 +34,11 @@
                     leave-active-class="animate__fadeOut"
                     appear
             >
+            <div id="title1" v-show="!isShow" >
+                REGISTER
+            </div>
+          </transition>
+
    <el-form :model="RegisterForm" status-icon :rules="rules" style="width: 300px;">
     <el-form-item label="账号" prop="username" >
     <el-input type="text" v-model="RegisterForm.username" placeholder="请输入用户名" ></el-input>
@@ -46,7 +51,6 @@
     <el-button @click="resetForm()">重置</el-button>
   </el-form-item>
 </el-form>
-</transition>
 </div>
  <!-- 移动滑块 -->
 <div id="aaa" :style="{
@@ -199,7 +203,6 @@ import 'animate.css'
 }
 #register{
     display: flex;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -212,6 +215,14 @@ import 'animate.css'
   font-size: 25px;
   font-weight: bold;
 
+}
+#title1{
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-size: 25px;
+  font-weight: bold;
 }
 #aaa{
     width: 300px;

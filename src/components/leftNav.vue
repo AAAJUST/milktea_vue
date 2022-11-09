@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="container">
   <!-- 左侧导航条 -->
-  <div class="leftNav">
+  <div class="leftNav" id="leftNav">
     <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
   <el-radio-button :label="false">展开</el-radio-button>
   <el-radio-button :label="true">收起</el-radio-button>
@@ -38,12 +38,11 @@
     <span slot="title">导航四</span>
   </el-menu-item>
 </el-menu>
-
+</div>
 
 <!-- 右侧边栏 -->
 <div id="right-view">
   <router-view></router-view>
-</div>
 </div>
 </div>
 </template>
@@ -75,7 +74,23 @@
 
 <style>
   .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
+    width: 150px;
     min-height: 400px;
+  }
+  #right-view{
+    width: 1050px;
+    height: 900px;
+    float: right;
+    background-color: aqua;
+  }
+  #container{
+    width: 1200px;
+    height: 1000px;
+    margin: 0 auto;
+
+  }
+  #leftNav{
+    width:150px;
+    float: left;
   }
 </style>

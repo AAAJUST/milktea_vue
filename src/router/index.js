@@ -36,12 +36,13 @@ export default new VueRouter({
                 component: () =>
                 import ("../page/Goods/add.vue"),
                 },
-                {
-                path:'AllTypes',
-                component: () =>
-                import ("../components/Type/AllTypes.vue"),
+                // {
+                // path:'AllTypes',
+                // component: () =>
+                // import ("../components/Type/AllTypes.vue"),
 
-                     }]  
+                // }
+            ]  
         },
       ]
     })
