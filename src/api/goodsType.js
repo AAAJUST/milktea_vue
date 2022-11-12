@@ -34,3 +34,12 @@ export function editType(params){
     data: { ...params }
   })
 }
+
+// 获取商品分类列表
+export function  getTtypeList(params){
+  return request({
+    url: '/goodstype/list',
+    method: 'get',
+    params
+  })
+}

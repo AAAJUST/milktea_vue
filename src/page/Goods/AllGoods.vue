@@ -55,7 +55,7 @@
       </template>
     </el-table-column>
     <el-table-column
-      prop="type"
+      prop="goodsTypeName"
       label="分类"
       width="120"
       >

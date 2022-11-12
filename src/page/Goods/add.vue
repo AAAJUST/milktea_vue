@@ -15,8 +15,7 @@
       </el-form-item>
       <el-form-item label="商品分类">
         <el-select v-model="form.typeId" placeholder="请选择商品种类">
-          <el-option label="区域一" value="1"></el-option>
-          <el-option label="区域二" value="2"></el-option>
+          <el-option v-for="(item,index) in TypeList" :key="index" :label="item.typename" :value="item.id" />
         </el-select>
       </el-form-item>
       <el-form-item label="商品图片">
@@ -43,10 +42,12 @@
 import {queryGoodsById}  from '@/api/goods'
 import {addGoods}  from '@/api/goods'
 import {editGoods}  from '@/api/goods'
+import {getTtypeList}  from '@/api/goodsType'
 export default {
     data() {
       return {
         id: '',
+        TypeList:[],
         actionType: '',
         form: {
           id:'',
@@ -61,6 +62,7 @@ export default {
       }
     },
     created() {
+          this.getDishList()
           this.id = this.$route.query.id
           this.actionType = this.id ? 'edit' : 'add'
           if (this.id) {
@@ -97,11 +99,17 @@ export default {
           this.$message.error('请求出错了：' + err)
         })
       }
-                    
       },
-      goBack(){{
-        this.$parent.routerevent("/index/AllGoods");
-      }},
+      // 获取菜品分类
+      getDishList() {
+        getTtypeList().then(res => {
+          if (res.code === 1) {
+            this.TypeList = res.data
+          } else {
+            this.$message.error(res.msg || '操作失败')
+          }
+        })
+      },
       handleRemove(file, fileList) {
         console.log(file, fileList);
       },
@@ -109,7 +117,10 @@ export default {
         console.log(file, fileList);
         this.dialogImageUrl = file.url;
         this.form.img = res.data;
-      }
+      },
+      goBack(){{
+        this.$parent.$parent.routerevent("/index/AllGoods");
+      }},
     }
   }
 </script>
