@@ -13,7 +13,12 @@
                 LOGIN
             </div>
             </transition>
-           
+            <transition
+                    name="animate__animated animate__bounce"
+                    enter-active-class="animate__fadeIn"
+                    leave-active-class="animate__fadeOut"
+                    appear
+            >
         <el-form :model="UserForm"  style="width: 300px;">
   <el-form-item label="账号" prop="username">
     <el-input type="text" v-model="UserForm.username" placeholder="请输入用户名" ></el-input>
@@ -24,7 +29,7 @@
    <el-button type="primary" @click="userlogin()">登录</el-button>
    <el-button @click="resetForm()">重置</el-button>
 </el-form>
-       
+            </transition> 
 </div>
     <!-- 注册表单 -->
     <div id="register">
@@ -38,7 +43,12 @@
                 REGISTER
             </div>
           </transition>
-
+          <transition
+                    name="animate__animated animate__bounce"
+                    enter-active-class="animate__fadeIn"
+                    leave-active-class="animate__fadeOut"
+                    appear
+            >
    <el-form :model="RegisterForm" status-icon :rules="rules" style="width: 300px;">
     <el-form-item label="账号" prop="username" >
     <el-input type="text" v-model="RegisterForm.username" placeholder="请输入用户名" ></el-input>
@@ -51,6 +61,7 @@
     <el-button @click="resetForm()">重置</el-button>
   </el-form-item>
 </el-form>
+    </transition>
 </div>
  <!-- 移动滑块 -->
 <div id="aaa" :style="{
@@ -60,25 +71,35 @@ borderBottomLeftRadious:styleObj.borderBottomLeftRadious,
 borderBottomRightRadious:styleObj.borderBottomRightRadious,
 right:styleObj.right,
 }" >
+
+<transition
+                     name="animate__animated animate__bounce"
+                     enter-active-class="animate__fadeInUp"
+                     leave-active-class="animate__zoomOut"
+                     appear
+             >
 <div id="aa" v-show="isShow" style="display:flex;align-items: center;justify-content: center;flex-direction: column;height: 200px;">
     没有账户？加入我们！
     <div id="a" style="flex:2;display:flex;align-items: center;justify-content: center;">
-      <transition
-                    name="animate__animated animate__bounce"
-                    enter-active-class="animate__rubberBand"
-                    leave-active-class="animate__rubberBand"
-                    appear
-            >
     <el-button type="primary" round @click="ChangToMan()">用户注册</el-button>
-    </transition>
     </div>
 </div>
+</transition>
+
+
+<transition
+                     name="animate__animated animate__bounce"
+                     enter-active-class="animate__fadeInUp"
+                     leave-active-class="animate__zoomOut"
+                     appear
+             >
 <div id="a1" v-show="!isShow" style="display:flex;align-items: center;justify-content: center;flex-direction: column;height: 200px;">
     用户请登录
     <div id="a2" style="flex:2;display:flex;align-items: center;justify-content: center;">
     <el-button type="primary" round @click="ChangToUser()">用户登录</el-button>
     </div>
     </div>
+</transition>
   </div>
  </div>
 </div>
@@ -168,12 +189,12 @@ import 'animate.css'
       },
 
       async userlogin(){
-        let res= await userloginApi(this.UserForm).then(res=>{
-          
-            localStorage.setItem("user",JSON.stringify(res.data))
-            this.$message.success("登陆成功！")
+        // let res= await userloginApi(this.UserForm).then(res=>{
+            this.$route.push("/index")
+            // localStorage.setItem("user",JSON.stringify(res.data))
+            // this.$message.success("登陆成功！")
          
-        })
+        // })
 
          } 
         }
