@@ -55,6 +55,7 @@
             >
             删除成功！
             </el-button>
+          </template>
     </el-table-column>
     </el-table>
   </template>
