@@ -2,7 +2,7 @@
   <div id="container">
   <!-- 左侧导航条 -->
   <div class="leftNav" id="leftNav">
-<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
   <el-radio-button :label="false">展开</el-radio-button>
   <el-radio-button :label="true">收起</el-radio-button>
 </el-radio-group>
@@ -27,7 +27,9 @@
 </div>
 
 <!-- 右侧边栏 -->
+<div id="right-view">
   <router-view></router-view>
+</div>
 </div>
 </template>
 
@@ -61,19 +63,18 @@
     min-height: 400px;
   }
   #right-view{
-    width: 1050px;
-    height: 900px;
+    width: calc(100% - 230px);
+    height: 100%;
     float: right;
     background-color: aqua;
+    padding: 20px;
   }
   #container{
-    width: 1200px;
-    height: 1000px;
-    margin: 0 auto;
-
+    height: 100%;
   }
   #leftNav{
-    width:150px;
+    width:190px;
+    height: 100%;
     float: left;
   }
 </style>

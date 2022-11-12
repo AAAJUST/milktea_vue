@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>
+  <div class="leader">
+    <div class="top">
         <el-button
             type="primary"
             style="margin:0 20px"
@@ -12,16 +12,17 @@
     <el-table
     :data="tableData"
     stripe
-    style="width: 100%">
+    style="width: 100%"
+    border>
     <el-table-column
       prop="typename"
       label="分类名称"
-      width="180">
+      width="380">
     </el-table-column>
     <el-table-column
       prop="typecontent"
       label="分类内容"
-      width="180">
+      width="380">
     </el-table-column>
     <el-table-column
       prop="updateTime"
@@ -29,7 +30,7 @@
     </el-table-column>
     <el-table-column
       label="操作"
-      width="180"
+      width="280"
       >
       <template slot-scope="scope">
             <el-button
@@ -95,7 +96,7 @@
       </span>
     </el-dialog>
     <el-pagination
-      style="padding-left:500px"
+      style="padding-left:35%"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page=1
@@ -265,5 +266,12 @@ export default {
 }
 .blue{
   color: rgba(0, 162, 255, 0.548);
+}
+.top{
+  padding-bottom: 15px;
+}
+.leader{
+  background-color: white;
+  padding: 15px 10px;
 }
 </style>

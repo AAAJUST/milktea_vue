@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>
+  <div class="leader">
+    <div class="top">
       <div class="left" style="margin-left:20px">        
           <el-input
           v-model="input"
@@ -30,6 +30,8 @@
         </div>
     </div>
      <el-table
+    border
+    stripe
     ref="multipleTable"
     :data="tableData"
     tooltip-effect="dark"
@@ -42,12 +44,12 @@
     <el-table-column
       prop="name"
       label="商品名称"
-      width="120">
+      width="130">
     </el-table-column>
     <el-table-column
       prop="img"
       label="图片"
-      width="120">
+      width="130">
       <template slot-scope="{ row }">
             <el-image style="width: auto; height: 40px; border:none;cursor: pointer;" 
             :src="getImage(row.img)"  >
@@ -57,29 +59,28 @@
     <el-table-column
       prop="goodsTypeName"
       label="分类"
-      width="120"
+      width="130"
       >
       <!-- show-overflow-tooltip  过长隐藏-->
     </el-table-column>
     <el-table-column
       prop="price"
       label="售价"
-      width="120">
+      width="130">
     </el-table-column>
     <el-table-column
       prop="updateTime"
       label="最后更改时间"
-      width="240">
+      width="300">
     </el-table-column>
     <el-table-column
       prop="message"
       label="简介"
-      width="240"
+      width="300"
       show-overflow-tooltip>
     </el-table-column>
     <el-table-column
       label="操作"
-      width="240"
       >
       <template slot-scope="scope">
             <el-button
@@ -109,6 +110,7 @@
     </el-table-column>
   </el-table>    
   <el-pagination
+       style="padding-left:35%"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page=1
@@ -248,6 +250,10 @@ export default {
 </script>
 
 <style>
+.leader{
+  background-color: white;
+  padding-bottom: 15px;
+}
 .left{
   float: left;
 }
@@ -272,5 +278,9 @@ export default {
 }
 .blue{
   color: rgba(0, 162, 255, 0.548);
+}
+.top{
+  padding: 15px 0;
+  overflow: hidden;
 }
 </style>

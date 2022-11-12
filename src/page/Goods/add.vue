@@ -1,11 +1,11 @@
 <template>
-  <div class="leader">
+  <div class="leader1">
     <el-form 
     ref="form" 
     :model="form" 
     label-width="80px">
-      <el-form-item label="商品名称">
-        <el-input v-model="form.name"></el-input>
+      <el-form-item label="商品名称" >
+        <el-input v-model="form.name" ></el-input>
       </el-form-item>
       <el-form-item label="商品价格">
         <el-input v-model="form.price"></el-input>
@@ -126,7 +126,10 @@ export default {
 </script>
 
 <style>
-.leader{
+.leader1{
+  padding: 15px 1px;
   padding-left: 100px;
+  padding-right: 60%;
+  background-color: white;
 }
 </style>
