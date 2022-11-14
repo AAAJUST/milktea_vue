@@ -135,7 +135,7 @@ export default {
         tableData:[],
         checkList:[],
         counts:0,
-        img:''
+        img:'',
       }
     },
     created() {

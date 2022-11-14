@@ -13,11 +13,11 @@
    </el-menu-item>
   <el-menu-item index="2"  @click="addFoodtype('/index/AllGoods')">
     <i class="el-icon-menu"></i>
-    <span slot="title">商品查询</span>
+    <span slot="title">商品管理</span>
   </el-menu-item>
   <el-menu-item index="3" @click="addFoodtype('/index/AllTypes')">
     <i class="el-icon-document"></i>
-    <span slot="title">分类查询</span>
+    <span slot="title">分类管理</span>
   </el-menu-item>
   <el-menu-item index="4">
     <i class="el-icon-setting"></i>
@@ -40,6 +40,8 @@
     data() {
       return {
         isCollapse: true,
+        content:'',
+        goBackFlag:false
       };
     },
     methods: {
@@ -53,6 +55,9 @@
               console.log(this.$parent);
               this.$parent.routerevent(st,'');
           },
+      goBack() {
+        console.log('go back');
+      }
     }
   }
 </script>
@@ -76,5 +81,10 @@
     width:190px;
     height: 100%;
     float: left;
+  }
+  .back{
+    height: 60px;
+    background-color: white;
+    line-height: 60px;
   }
 </style>
