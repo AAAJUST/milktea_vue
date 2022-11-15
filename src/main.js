@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios';//引入axios
 import VueRouter from 'vue-router';
 import router from './router'
+import store from './store'
 
 
 Vue.use(VueRouter)
@@ -16,5 +17,6 @@ Vue.use(ElementUI);
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')

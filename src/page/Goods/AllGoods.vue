@@ -209,10 +209,10 @@ export default {
           addFoodtype(st){
             if(st === '/add'){
               console.log(this.$parent.$parent);
-              this.$parent.$parent.routerevent('/index/Add','');
+              this.$parent.$parent.routerevent2('/index/Add','添加商品','');
             }else{
               console.log(st);
-              this.$parent.$parent.routerevent('/index/Add',st)
+              this.$parent.$parent.routerevent2('/index/Add','修改商品',st)
             }
           },
           getImage (image) {

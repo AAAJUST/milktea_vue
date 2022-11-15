@@ -259,7 +259,7 @@ export default {
       },
       // 按钮 - 删除口味标签
       delFlavorLabel (index, ind) {
-        this.peiliaoData[index].value.splice(ind, 1)
+        this.peiliao[index].value.splice(ind, 1)
       },
       //口味位置记录
       flavorPosition (index) {

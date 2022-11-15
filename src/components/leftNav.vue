@@ -11,23 +11,28 @@
       <i class="el-icon-location"></i>
      <span slot="title">用户查询</span>
    </el-menu-item>
-  <el-menu-item index="2"  @click="addFoodtype('/index/AllGoods')">
+  <el-menu-item index="2"  @click="addFoodtype('/index/AllGoods','商品管理')">
     <i class="el-icon-menu"></i>
     <span slot="title">商品管理</span>
   </el-menu-item>
-  <el-menu-item index="3" @click="addFoodtype('/index/AllTypes')">
+  <el-menu-item index="3" @click="addFoodtype('/index/AllTypes','分类管理')">
     <i class="el-icon-document"></i>
     <span slot="title">分类管理</span>
   </el-menu-item>
   <el-menu-item index="4">
     <i class="el-icon-setting"></i>
-    <span slot="title">导航四</span>
+    <span slot="title"></span>
   </el-menu-item>
 </el-menu>
 </div>
 
 <!-- 右侧边栏 -->
 <div id="right-view">
+  <div class="nav">
+    <span v-if="getnavfalse()" class="goBackflag" @click="goBack()" style="font-size: 17px">
+      <- 返回</span>
+    <span>{{getnavname()}}</span>
+  </div>
   <router-view></router-view>
 </div>
 </div>
@@ -41,7 +46,8 @@
       return {
         isCollapse: true,
         content:'',
-        goBackFlag:false
+        goBackFlag:false,
+        name:''
       };
     },
     methods: {
@@ -51,12 +57,18 @@
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       },
-      addFoodtype(st){
+      addFoodtype(st,st1){
               console.log(this.$parent);
-              this.$parent.routerevent(st,'');
+              this.$parent.routerevent(st,st1,'');
           },
       goBack() {
-        console.log('go back');
+        this.$parent.routerevent('/index/AllGoods','商品管理','');
+      },
+      getnavname(){
+        return this.$store.state.name
+      },
+      getnavfalse(){
+        return this.$store.state.goBackFlag
       }
     }
   }
@@ -86,5 +98,16 @@
     height: 60px;
     background-color: white;
     line-height: 60px;
+  }
+  .nav{
+    height: 60px;
+    line-height: 60px;
+    background-color: white;
+    margin-bottom: 10px;
+    padding-left: 8px;
+    font-size: 16px ;
+  }
+  .goBackflag{
+    margin-right: 10px;
   }
 </style>
