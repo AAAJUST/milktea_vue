@@ -41,9 +41,21 @@ export default new VueRouter({
                 path:'AllTypes',
                 component: () =>
                 import ("../page/Type/AllTypes.vue"),
+                },
+                {
+                    path:'addEmp',
+                    component:() =>
+                    import ("../page/employee/add.vue")
+                },
+                {
+                    path:'emp',
+                    name:'emp',
+                    component:() =>
+                    import ('../page/employee/employee.vue'),
+                },
 
-             }
             ]  
         },
+        
       ]
     })

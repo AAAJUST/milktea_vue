@@ -7,7 +7,7 @@
   <el-radio-button :label="true">收起</el-radio-button>
 </el-radio-group>
 <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-  <el-menu-item index="1">
+  <el-menu-item index="1" @click="addFoodtype('/index/emp')">
       <i class="el-icon-location"></i>
      <span slot="title">用户查询</span>
    </el-menu-item>
