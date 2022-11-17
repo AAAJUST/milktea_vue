@@ -189,7 +189,7 @@ import 'animate.css'
       },
 
       async userlogin(){
-        // let res= await userloginApi(this.UserForm).then(res=>{
+        //  await userloginApi(this.UserForm).then(res=>{
             this.$route.push("/index")
             // localStorage.setItem("user",JSON.stringify(res.data))
             // this.$message.success("登陆成功！")
