@@ -163,17 +163,13 @@
           if(st === '/add')
           {
             console.log(st);
-            this.routerevent('addEmp','')
+            this.$parent.$parent.routerevent('/index/addEmp','')
           }else{
-            this.routerevent('addEmp',st)
+            this.$parent.$parent.routerevent('/index/addEmp',st)
           }
         },
-        routerevent(name,st){
-            this.$router.push({
-                path:name,
-                query: {id:st }
-            })
-            }
+        
+
         
     }
     }

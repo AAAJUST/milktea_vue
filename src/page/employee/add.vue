@@ -34,9 +34,6 @@
 import { createDecipheriv } from 'crypto';
 import {addEmployee} from '@/api/employee'
 import {editEmployee} from '@/api/employee'
-import { init } from 'events';
-import { query } from 'express';
-import {queryEmployeeById} from '@/api/employee'
   export default {
     data () {
       return {
@@ -60,18 +57,10 @@ import {queryEmployeeById} from '@/api/employee'
       }
     },
     methods:{
-      async init (){
-          queryEmployeeById(this.id).then(res =>{
-              if((res.code)==='1'){
-                this.form={...res.data}
-              }else {
-                this.$message.error(res.msg || '操作失败')
-              }
-            })
-          },
-          onSubmit(){
+          async onSubmit(){
+            console.log(this.form);
             if(this.actionType === 'add'){
-               addEmployee(this.form).then(res =>{
+              await addEmployee(this.form).then(res =>{
                 if(String(res.code) === '1'){
                   this.$message.success('用户添加成功')
                   this.goBack()
@@ -87,7 +76,7 @@ import {queryEmployeeById} from '@/api/employee'
             }
           },
           goBack(){
-              this.$parent.routerevent('/addEmployee')
+              this.$parent.$parent.routerevent('/index/emp')
             }
     }
     
