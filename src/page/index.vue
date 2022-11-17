@@ -12,13 +12,22 @@ export default {
         components:{leftNav},
         data(){
             return{
+
             }
           },
         methods: {
-            routerevent(name,st){
+            routerevent(name,nav,st){
+            this.$store.commit('setname',nav)
             this.$router.push({
                 path:name,
-                query: {id:st }
+                query: {id:st },
+            })
+            },
+            routerevent2(name,nav,st){
+            this.$store.commit('Changegoback',nav)
+            this.$router.push({
+                path:name,
+                query: {id:st },
             })
             }
         },
