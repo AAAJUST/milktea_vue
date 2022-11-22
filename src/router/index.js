@@ -45,17 +45,21 @@ export default new VueRouter({
                 {
                     path:'addEmp',
                     component:() =>
-                    import ("../page/employee/add.vue")
+                        import ("../page/employee/add.vue")
                 },
                 {
                     path:'emp',
                     name:'emp',
                     component:() =>
-                    import ('../page/employee/employee.vue'),
+                        import ('../page/employee/employee.vue'),
                 },
-
             ]  
         },
-        
+        {
+            path: '/frontIndex',
+            name: 'frontIndex',
+            component: () =>
+                import ("../page/frontIndex.vue")
+        },
       ]
     })
