@@ -7,7 +7,7 @@
   <el-radio-button :label="true">收起</el-radio-button>
 </el-radio-group>
 <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-  <el-menu-item index="1" @click="addFoodtype('/index/emp')">
+  <el-menu-item index="1" @click="addFoodtype('/index/emp','用户查询')">
       <i class="el-icon-location"></i>
      <span slot="title">用户查询</span>
    </el-menu-item>
@@ -29,10 +29,10 @@
 <!-- 右侧边栏 -->
 <div id="right-view">
   <div class="nav">
-    <span v-if="getnavfalse()" class="goBackflag" @click="goBack()" style="font-size: 17px">
-      <- 返回</span>
-    <span>{{getnavname()}}</span>
-  </div>
+    <span v-if="getnavfalse()" class="goBackflag" @click="goBack()" style="font-size: 17px">返回
+      </span>
+      <span>{{getnavname()}}</span>
+    </div>
   <router-view></router-view>
 </div>
 </div>

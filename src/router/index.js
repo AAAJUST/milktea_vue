@@ -22,6 +22,12 @@ export default new VueRouter({
                 import ("../page/login.vue")
         },
         {
+            path:'/loginBack',
+            name:'loginBack',
+            component:()=>
+                import("../page/login_back.vue")
+        },
+        {
             path:'/index',
             name:'index',
             component: () =>

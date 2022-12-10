@@ -163,9 +163,9 @@
           if(st === '/add')
           {
             console.log(st);
-            this.$parent.$parent.routerevent('/index/addEmp','')
+            this.$parent.$parent.routerevent2('/index/addEmp','添加用户','')
           }else{
-            this.$parent.$parent.routerevent('/index/addEmp',st)
+            this.$parent.$parent.routerevent2('/index/addEmp','修改用户',st)
           }
         },
         
