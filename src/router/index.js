@@ -34,34 +34,46 @@ export default new VueRouter({
             import ("../page/index.vue"),
             children: [
                 {
-                path:'AllGoods',
-                component: () =>
-                import ("../page/Goods/AllGoods.vue"),
+                    path:'AllGoods',
+                    component: () =>
+                    import ("../page/Goods/AllGoods.vue"),
                 },
                 {
-                path:'Add',
-                component: () =>
-                import ("../page/Goods/add.vue"),
+                    path:'Add',
+                    component: () =>
+                    import ("../page/Goods/add.vue"),
                 },
                 {
-                path:'AllTypes',
-                component: () =>
-                import ("../page/Type/AllTypes.vue"),
+                    path:'AllTypes',
+                    component: () =>
+                    import ("../page/Type/AllTypes.vue"),
                 },
                 {
                     path:'addEmp',
                     component:() =>
-                    import ("../page/employee/add.vue")
+                        import ("../page/employee/add.vue")
                 },
                 {
                     path:'emp',
                     name:'emp',
                     component:() =>
-                    import ('../page/employee/employee.vue'),
+                        import ('../page/employee/employee.vue'),
                 },
-
             ]  
         },
-        
+        {
+            path: '/frontIndex',
+            name: 'frontIndex',
+            component: () =>
+                import ("../page/frontIndex.vue"),
+            children: [
+                {
+                    path:'gouwuche',
+                    name:'gouwuche',
+                    component: () =>
+                        import ("../page/gouwuche/gouwuche.vue"),
+               },
+            ]
+        },
       ]
     })
