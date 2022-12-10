@@ -1,23 +1,3 @@
-<!-- <template>
-    <el-container>
-        <el-header><headNav/></el-header>
-        <el-main><mainIndex/></el-main>
-        <el-footer>Footer</el-footer>
-    </el-container>
-</template>
-
-<script>
-import headNav from '@/components/front/headNav.vue';
-import mainIndex from '@/components/front/main/index.vue';
-export default {
-    components:{headNav,mainIndex},
-}
-</script>
-
-<style>
-
-</style> -->
-
 <template>
     <div>
         <header>
@@ -29,9 +9,16 @@ export default {
                     </a>
                 </div>
             <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Work</a></li>
+                <li><a href="#">主页</a></li>
+                <li><a @click="routerevent1('/frontIndex/gouwuche')">购物车</a>
+                    <el-drawer
+                        title="我是标题"
+                        :visible.sync="drawer"
+                        :with-header="false">
+                        <router-view></router-view>
+                    </el-drawer>
+                </li>
+                <li><a href="#">订单管理</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </header>
@@ -44,82 +31,29 @@ export default {
     <img src="../imge/img/mountains_front.png" id="mountains_front">
   </section>
   <div class="sec" id="sec">
-    <div class="cards">
-        <div class="card">
-            <div class="imgBx">
-            <img src="../imge/img/img.png">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Alina Smith<br><span>Senior UX/UI Designer</span></h2>
-                    <div class="data">
-                    <h3>342<br><span>Posts</span></h3>
-                    <h3>120k<br><span>Followers</span></h3>
-                    <h3>285<br><span>Following</span></h3>
-                    </div>
-                    <div class="actionBtn">
-                    <button>Follow</button>
-                    <button>Message</button>
+    <div v-for="(item, index) in datatable"  :key="index" class="cards">
+        <div class="cardshead">————————————————————{{item.typename}}————————————————————</div>
+        <div>
+            <div v-for="(good, index) in item.goods.slice(0, 4)"  :key="index" class="card">
+                <div class="imgBx">
+                <img :src="getImage(good.img)">
+                </div>
+                <div class="content">
+                    <div class="details">
+                        <h2>{{good.name}}<br><span>{{good.message}}</span></h2>
+                        <div class="data">
+                        <h3>{{good.number}}<br><span>数量</span></h3>
+                        <h3>{{good.price}}<br><span>单价</span></h3>
+                        <h3>285<br><span>Following</span></h3>
+                        </div>
+                        <div class="actionBtn">
+                        <button>加入购物车</button>
+                        <button>查看</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="imgBx">
-            <img src="../imge/img/img.png">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Alina Smith<br><span>Senior UX/UI Designer</span></h2>
-                    <div class="data">
-                    <h3>342<br><span>Posts</span></h3>
-                    <h3>120k<br><span>Followers</span></h3>
-                    <h3>285<br><span>Following</span></h3>
-                    </div>
-                    <div class="actionBtn">
-                    <button>Follow</button>
-                    <button>Message</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="imgBx">
-            <img src="../imge/img/img.png">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Alina Smith<br><span>Senior UX/UI Designer</span></h2>
-                    <div class="data">
-                    <h3>342<br><span>Posts</span></h3>
-                    <h3>120k<br><span>Followers</span></h3>
-                    <h3>285<br><span>Following</span></h3>
-                    </div>
-                    <div class="actionBtn">
-                    <button>Follow</button>
-                    <button>Message</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="imgBx">
-            <img src="../imge/img/img.png">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Alina Smith<br><span>Senior UX/UI Designer</span></h2>
-                    <div class="data">
-                    <h3>342<br><span>Posts</span></h3>
-                    <h3>120k<br><span>Followers</span></h3>
-                    <h3>285<br><span>Following</span></h3>
-                    </div>
-                    <div class="actionBtn">
-                    <button>Follow</button>
-                    <button>Message</button>
-                    </div>
-                </div>
-            </div>
+        <el-button style="margin-left:60px">更多</el-button>
         </div>
   </div>
   </div>
@@ -131,28 +65,61 @@ export default {
 
 
 <script>
+import {getGoods}  from '@/api/frontgoods'
 export default {
-mounted(){
-    let stars = document.getElementById('stars')
-let moon = document.getElementById('moon')
-let mountains_behind = document.getElementById('mountains_behind')
-let text = document.getElementById('text')
-let btn = document.getElementById('btn')
-let mountains_front = document.getElementById('mountains_front')
-let header = document.querySelector('header')
+    data() {
+        return {
+            drawer: false,
+            datatable:[],
+        }
+    },
+    mounted(){
+        let stars = document.getElementById('stars')
+        let moon = document.getElementById('moon')
+        let mountains_behind = document.getElementById('mountains_behind')
+        let text = document.getElementById('text')
+        let btn = document.getElementById('btn')
+        let mountains_front = document.getElementById('mountains_front')
+        let header = document.querySelector('header')
 
-window.addEventListener('scroll', function(){
-  let value = window.scrollY;
-  stars.style.left = value * 0.25 + 'px'
-  moon.style.top = value * 1.05 + 'px'
-  mountains_behind.style.top = value * 0.5 + 'px'
-  mountains_front.style.top = value * 0 + 'px'
-  text.style.marginRight = value * 4 + 'px'
-  text.style.marginTop = value * 1.5 + 'px'
-  btn.style.marginTop = value * 1.5 + 'px'
-  header.style.top = value * 0.5 + 'px'
-})
-}
+        window.addEventListener('scroll', function(){
+            let value = window.scrollY;
+            stars.style.left = value * 0.25 + 'px'
+            moon.style.top = value * 1.05 + 'px'
+            mountains_behind.style.top = value * 0.5 + 'px'
+            mountains_front.style.top = value * 0 + 'px'
+            text.style.marginRight = value * 4 + 'px'
+            text.style.marginTop = value * 1.5 + 'px'
+            btn.style.marginTop = value * 1.5 + 'px'
+            header.style.top = value * 0.5 + 'px'
+        })
+    },
+    created() {
+        this.init()
+    },
+    methods: {
+        async init () {
+            console.log("11111111");
+            await getGoods().then(res => {
+              if (String(res.code) === '1') {
+                this.datatable = res.data
+              } else {
+                this.$message.error(res.msg || '操作失败')
+              }
+            }).catch(err => {
+              this.$message.error('请求出错了：' + err)
+            })
+          },
+        routerevent1(name){
+            this.drawer = true
+            this.$router.push({
+                path:name,
+            })
+        },
+        getImage (image) {
+            return `http://localhost:8080/common/download?name=${image}`
+          },
+    },
 }
 </script>
 
@@ -162,9 +129,23 @@ window.addEventListener('scroll', function(){
 @import url(./stylesou.css);
 
 .cards{
-    margin: 300px 0;
-    padding: 100px 0;
+    margin: 150px 0;
+    padding: 30px 0;
     overflow: hidden;
     background-color: #836389;
+}
+.cardshead{
+    margin-bottom: 100px;
+    text-align: center;
+    color: white;
+    font-size: 19px;
+}
+.el-drawer__body{
+    padding: 0;
+    padding-left: 10px;
+    margin-top: -20%;
+}
+.el-drawer__body::before{
+    content: none;
 }
 </style>
