@@ -36,8 +36,10 @@
     :data="tableData"
     tooltip-effect="dark"
     style="width: 100%"
+    :row-key="getRowKey"
     @selection-change="handleSelectionChange">
     <el-table-column
+      :reserve-selection="true"
       type="selection"
       width="55">
     </el-table-column>
@@ -218,6 +220,9 @@ export default {
           getImage (image) {
             return `http://localhost:8080/common/download?name=${image}`
           },
+          getRowKey(row){
+            return row.id
+          }
           // 添加
           // addFoodtype (st) {
           //   if (st === 'add'){

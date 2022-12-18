@@ -111,6 +111,7 @@ right:styleObj.right,
 </div>
 </template>
 <script>
+
 import 'animate.css'
 import {userloginApi}  from '@/api/login.js'
 import {userReigsiterApi} from '@/api/login.js'
@@ -212,7 +213,7 @@ import {userReigsiterApi} from '@/api/login.js'
             if(res.code=="1"){
             localStorage.setItem("user",JSON.stringify(res.data))
             this.$message.success("登陆成功！")
-            this.$router.push("/index")
+            this.$router.push("/frontindex")
             }else{
               this.$message.error(res.msg)
             }

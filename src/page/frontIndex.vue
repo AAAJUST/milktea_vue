@@ -13,13 +13,22 @@
                 <li><a @click="routerevent1('/frontIndex/gouwuche')">购物车</a>
                     <el-drawer
                         title="我是标题"
+                        v-if="drawer"
                         :visible.sync="drawer"
                         :with-header="false">
-                        <router-view></router-view>
+                        <router-view name="one"></router-view>
                     </el-drawer>
                 </li>
-                <li><a href="#">订单管理</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a @click="todingdan()">订单管理</a></li>
+                <li><a @click="routerevent2('/frontIndex/address')">地址管理</a>
+                    <el-drawer
+                        title="我是标题"
+                        :visible.sync="drawer2"
+                        :direction="direction"
+                        :with-header="false">
+                        <router-view name="tow"></router-view>
+                    </el-drawer>
+                </li>
             </ul>
         </header>
   <section>
@@ -34,7 +43,7 @@
     <div v-for="(item, index) in datatable"  :key="index" class="cards">
         <div class="cardshead">————————————————————{{item.typename}}————————————————————</div>
         <div>
-            <div v-for="(good, index) in item.goods.slice(0, 4)"  :key="index" class="card">
+            <div v-for="(good, index) in item.goods.slice(0, 3)"  :key="index" class="card">
                 <div class="imgBx">
                 <img :src="getImage(good.img)">
                 </div>
@@ -47,7 +56,7 @@
                         <h3>285<br><span>Following</span></h3>
                         </div>
                         <div class="actionBtn">
-                        <button>加入购物车</button>
+                        <button @click="addgouwuche(good)">加入购物车</button>
                         <button>查看</button>
                         </div>
                     </div>
@@ -66,11 +75,14 @@
 
 <script>
 import {getGoods}  from '@/api/frontgoods'
+import {addgouwuche}  from '@/api/gouwuche'
 export default {
     data() {
         return {
             drawer: false,
             datatable:[],
+            drawer2:false,
+            direction:'ltr'
         }
     },
     mounted(){
@@ -99,7 +111,6 @@ export default {
     },
     methods: {
         async init () {
-            console.log("11111111");
             await getGoods().then(res => {
               if (String(res.code) === '1') {
                 this.datatable = res.data
@@ -116,9 +127,30 @@ export default {
                 path:name,
             })
         },
+        routerevent2(name){
+            this.drawer2 = true
+            this.$router.push({
+                path:name,
+            })
+        },
         getImage (image) {
             return `http://localhost:8080/common/download?name=${image}`
-          },
+        },
+        addgouwuche(id) {
+            addgouwuche(id).then(res => {
+              if (String(res.code) === '1') {
+                this.$message.success('添加成功！')
+              } else {
+                this.$message.error(res.msg || '操作失败')
+              }
+            })
+        },
+        todingdan(){
+            this.$router.push('/dingdan')
+            setTimeout(function () {
+                window.location.reload();
+            }, 10);
+        }
     },
 }
 </script>
@@ -134,6 +166,9 @@ export default {
     overflow: hidden;
     background-color: #836389;
 }
+.cards:first-child{
+    margin-top: -50px;
+}
 .cardshead{
     margin-bottom: 100px;
     text-align: center;
@@ -147,5 +182,8 @@ export default {
 }
 .el-drawer__body::before{
     content: none;
+}
+.search-box{
+    margin-left: -22%;
 }
 </style>

@@ -28,6 +28,12 @@ export default new VueRouter({
                 import("../page/login_back.vue")
         },
         {
+            path: '/dingdan',
+            name: 'dingdan',
+            component: () =>
+                import ("../components/dingdan.vue")
+        },
+        {
             path:'/index',
             name:'index',
             component: () =>
@@ -42,6 +48,11 @@ export default new VueRouter({
                     path:'Add',
                     component: () =>
                     import ("../page/Goods/add.vue"),
+                },
+                {
+                    path:'Dingdan',
+                    component: () =>
+                    import ("../page/Dingdan/dingdan.vue"),
                 },
                 {
                     path:'AllTypes',
@@ -70,9 +81,17 @@ export default new VueRouter({
                 {
                     path:'gouwuche',
                     name:'gouwuche',
-                    component: () =>
-                        import ("../page/gouwuche/gouwuche.vue"),
+                    components: {
+                        one:resolve=>require(["../page/zhuye/gouwuche.vue"],resolve)
+                    },
                },
+               {
+                path:'address',
+                name:'address',
+                components: {
+                    tow:resolve=>require(["../page/zhuye/address.vue"],resolve)
+                },
+           },
             ]
         },
         {

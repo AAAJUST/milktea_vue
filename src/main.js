@@ -15,7 +15,7 @@ Vue.prototype.request = request;
 Vue.prototype.$axios = axios;//把axios挂载到vue上
 Vue.config.productionTip = false
 Vue.use(ElementUI);
-
+axios.defaults.withCredentials = true;
 new Vue({
   render: h => h(App),
   router,
