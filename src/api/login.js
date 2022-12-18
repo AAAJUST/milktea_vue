@@ -7,3 +7,11 @@ export function userloginApi(data){
     })
         
 }
+
+export function userReigsiterApi(data){
+    return request({
+        url:'http://localhost:8080/vuelogin/register',
+        'method':'post',
+        data
+    })
+}

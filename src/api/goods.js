@@ -42,3 +42,18 @@ export function editGoods(params){
     data: { ...params }
   })
 }
+
+export function getallGoods(params){
+  return request({
+     url:'http://localhost:8080/goods/getGoods',
+     method: 'get',
+     params
+  })
+}
+
+export function getGoodsById(idss){
+  return request({
+    url: `http://localhost:8080/goods/danpin/${idss}`,
+    method:'get'
+})
+}

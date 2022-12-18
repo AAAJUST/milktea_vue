@@ -75,5 +75,16 @@ export default new VueRouter({
                },
             ]
         },
+        {
+            path: '/allGoods',
+            name: 'allgoods',
+            component: () =>
+                import ("../page/Goods/allproducts.vue"),
+        },
+        {
+        path:'/danpin',
+        component: () =>
+        import ("../page/Goods/danpin.vue")
+        }
       ]
     })

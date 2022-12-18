@@ -7,7 +7,8 @@ import axios from 'axios';//引入axios
 import VueRouter from 'vue-router';
 import router from './router'
 import store from './store'
-
+import "@/assets/font/font.css"
+import qs from 'qs'
 
 Vue.use(VueRouter)
 Vue.prototype.request = request;

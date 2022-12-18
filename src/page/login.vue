@@ -113,13 +113,14 @@ right:styleObj.right,
 <script>
 import 'animate.css'
 import {userloginApi}  from '@/api/login.js'
+import {userReigsiterApi} from '@/api/login.js'
   export default {
     data() {
       var validate=(rule,value,callback)=>{
         if(value===''){
           callback(new Error('请在此输入密码'));
         } else if(value !==this.RegisterForm.Pass){
-          callback(new Error('两次输入密码不正确'))
+          callback(new Error('请输入相同的密码'))
         }else{
           callback()
         }
@@ -184,15 +185,22 @@ import {userloginApi}  from '@/api/login.js'
             this.styleObj.right= '50%',
             this.isShow=!this.isShow
         },
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
+     async submitForm() {
+        let user={};
+        user.username=this.RegisterForm.registername
+        user.password=this.RegisterForm.pass
+        await userReigsiterApi(user).then(res=>{
+          if(res.code=="1"){
+            this.resetForm={
+              registernameL:'',
+              pass:''
+            }
+            this.$message.success("注册成功！")
+            this.changeToLogin()
+          }else{
+            this.$message.error(r.msg)
           }
-        });
+        })
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
@@ -206,7 +214,7 @@ import {userloginApi}  from '@/api/login.js'
             this.$message.success("登陆成功！")
             this.$router.push("/index")
             }else{
-              this.$message.error("用户名或密码错误")
+              this.$message.error(res.msg)
             }
         })
 
