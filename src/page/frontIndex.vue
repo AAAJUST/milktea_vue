@@ -1,7 +1,7 @@
 <template>
     <div>
         <header>
-            <a href="#" class="logo">Logo</a>
+            <a href="#" class="logo" style="margin-left: 150px;border-radius: 50%;"><img src="../imge/img/logo.png" style="width: 150px;height: 100px;"></a>
                 <div class="search-box">
                     <input class="search-txt" type="text" placeholder="动态搜索框">
                     <a class="search-btn">
@@ -29,6 +29,7 @@
                         <router-view name="tow"></router-view>
                     </el-drawer>
                 </li>
+                <li><a @click="toAllGoods()">所有商品</a></li>
             </ul>
         </header>
   <section>
@@ -57,7 +58,7 @@
                         </div>
                         <div class="actionBtn">
                         <button @click="addgouwuche(good)">加入购物车</button>
-                        <button>查看</button>
+                        <button @click="queryDanpin(good.id)">查看</button>
                         </div>
                     </div>
                 </div>
@@ -150,7 +151,22 @@ export default {
             setTimeout(function () {
                 window.location.reload();
             }, 10);
-        }
+        },
+        toAllGoods(){
+            this.$router.push('/allGoods')
+        },
+        queryDanpin(st){
+            this.routerevent('/danpin','查看单品',st)
+
+         },
+         routerevent(name,nav,st){
+            this.$store.commit('setname',nav)
+            this.$router.push({
+                path:name,
+                query: {id:st },
+            })
+            },
+
     },
 }
 </script>
@@ -185,5 +201,10 @@ export default {
 }
 .search-box{
     margin-left: -22%;
+}
+.logo:hover,
+.logo.active {
+  background: #fff;
+  color: #2b1055;
 }
 </style>

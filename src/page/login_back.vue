@@ -1,6 +1,6 @@
 <template>
     <div id="root">
-    <el-form  :model="AdminForm" status-icon :rules="rules" style="width: 300px;">
+    <el-form  :model="AdminForm" status-icon :rules="rules" ref="AdminForm" style="width: 300px;">
    <el-form-item   prop="username" ><div style="flex: 1;display: flex;align-items: center"><svg t="1670146441405" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2704" width="20px" height="20px"><path d="M508.3136 21.9136C233.6768 21.9136 11.0592 244.5312 11.0592 519.168s222.6176 497.2544 497.2544 497.2544S1005.568 793.8048 1005.568 519.168 782.9504 21.9136 508.3136 21.9136zM508.3136 997.9904c-124.3136 0-237.9776-47.7184-325.0176-123.0848 8.8064-162.2016 136.3968-290.816 297.1648-304.3328-83.968-13.312-148.2752-86.2208-148.2752-173.8752 0-97.28 78.848-176.128 176.128-176.128 97.28 0 176.128 78.848 176.128 176.128 0 87.8592-64.1024 160.5632-148.2752 173.8752 160.768 13.5168 288.3584 141.9264 297.1648 304.128C746.2912 950.0672 632.6272 997.9904 508.3136 997.9904z" p-id="2705" fill="#360e6f"></path></svg>&nbsp;员&nbsp;&nbsp;&nbsp;工&nbsp;&nbsp;&nbsp;号:</div>
     <el-input type="text" v-model="AdminForm.username"  placeholder="请输入员工号"></el-input>
    </el-form-item>
@@ -9,7 +9,7 @@
    </el-form-item >
    <el-form-item style="flex: 1;display: flex;justify-content: center;align-items: center">
    <el-button type="primary" @click="login()">登录</el-button>
-   <el-button @click="resetForm()">重置</el-button>
+   <el-button @click="resetForm('AdminForm')">重置</el-button>
   </el-form-item>
   </el-form>
     </div>
@@ -55,8 +55,9 @@ import {adminLoginApi} from '@/api/loginBack.js'
                 if(res.code=="1"){
                     localStorage.setItem("employee",JSON.stringify(res.data))
                     this.$message.success("登录成功")
+                    this.$router.push("/index")
                 }else{
-                    this.$message.error(r.msg)
+                    this.$message.error(res.msg)
                 }
             })
         }

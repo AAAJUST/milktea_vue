@@ -19,30 +19,41 @@
             </h1>
         </div>
         <!-- 显示数据库的图片 -->
-        <div class="main-img">
-            <img src="@/imge/danpinimg/cup-dark.png" v-show="userShow" alt="Blvck"/>
-            <img src="@/imge/danpinimg/cup-light.png" v-show="!userShow">
+        <div class="main-img" >
+            <div class="img_view" style="width: 1200px;">
+        <el-carousel :interval="4000" type="card" height="400px" width="1200px"  style="top: 262px;right:50%;">
+            <el-carousel-item  >
+                <h3 class="medium"><img :src="getImage(form.img)"/></h3>
+         </el-carousel-item>
+         <el-carousel-item  >
+                <h3 class="medium"><img :src="getImage(form.img)"/></h3>
+         </el-carousel-item>
+         <el-carousel-item  >
+                <h3 class="medium"><img :src="getImage(form.img)"/></h3>
+         </el-carousel-item>
+         </el-carousel> 
+        </div>
+            <!-- <img src="@/imge/danpinimg/cup-dark.png" v-show="userShow" alt="Blvck"/>
+            <img src="@/imge/danpinimg/cup-light.png" v-show="!userShow"> -->
         </div>
         <!-- 文本 -->
         <div class="text">
             <div class="text-left">
                 <div>
-                    <h3><span class="toggle-text">
-                        商品简介{{form.name}}</span>Product introduction.
+                    <h3><span class="toggle-text" style="font-weight: bold;">
+                        商品名称：{{form.name}}</span>
                     </h3>
-                    <p>
-                        spade A AAAJUST
-                        MUG THAT DRINKING YOU FAOURITE BEVEGER
+                    <p> 商品简介：
+                        {{form.message}}
                     </p>
                 </div>
             </div>
             <div class="right">
                 <div class="text-right">
                     <div>
-                        <h3>The design {{form.price}}</h3>
-                        <p>
-                            learn more what makes our 
-                            Blvck Tumbler unique and different
+                        <h3>商品价格：{{form.price}}</h3>
+                        <p> 商品数量：
+                            {{form.number}}
                         </p>
                     </div>
                 </div>
@@ -55,13 +66,13 @@
         <!-- 购买 -->
         <div class="links">
             <a href="#" class="main-link">
-                <span>Explore Now</span>
+                <span>现在购买！！</span>
             </a>
             <a href="#" >Credit</a>
         </div>
            <!-- 图片预览框 -->
     <div class="img_view" >
-        <el-carousel :interval="4000" type="card" height="200px" >
+        <!-- <el-carousel :interval="4000" type="card" height="200px" >
             <el-carousel-item  >
                 <h3 class="medium"><img :src="getImage(form.img)"/></h3>
          </el-carousel-item>
@@ -71,7 +82,7 @@
          <el-carousel-item  >
                 <h3 class="medium"><img :src="getImage(form.img)"/></h3>
          </el-carousel-item>
-         </el-carousel> 
+         </el-carousel>  -->
         </div>
     </div>
     
@@ -143,8 +154,8 @@ export default{
 <style>
 :root{
     --accent:#fe662a;
-    --primary: #2b3138;
-    --secondary: #202329;
+    --primary: #ae95b3;
+    --secondary: #836389;
     --text-primary: #fff;
     --text-secondary: #ccc;
     --text-bg:#252932;
