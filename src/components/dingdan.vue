@@ -8,7 +8,7 @@
             >
             <div style="font-size: 24px;" class="center"><b>{{datatable2.code}}</b></div>
             <div class="center">取单号</div>
-            <el-steps :active="this.datatable2.state">
+            <el-steps :active="datatable2.state">
                 <el-step title="步骤 1" icon="el-icon-edit"></el-step>
                 <el-step title="步骤 2" icon="el-icon-upload"></el-step>
                 <el-step title="步骤 3" icon="el-icon-picture"></el-step>
@@ -43,6 +43,7 @@
         <div class="card" v-for="(item, index) in datatable"  :key="index">
             <div class="head">
                 <div class="left" v-if="item.state == 0">未完成</div>
+                <div class="left" v-if="item.state == 1">未完成</div>
                 <div class="left" v-if="item.state == 2">已完成</div>
                 <div class="right"><el-link type="primary" @click="open(item)">详情-></el-link></div>
             </div>

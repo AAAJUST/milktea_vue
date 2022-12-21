@@ -19,9 +19,9 @@
     <i class="el-icon-document"></i>
     <span slot="title">分类管理</span>
   </el-menu-item>
-  <el-menu-item index="4">
+  <el-menu-item index="4" @click="addFoodtype('/index/Dingdan','订单管理')">
     <i class="el-icon-setting"></i>
-    <span slot="title"></span>
+    <span slot="title">订单管理</span>
   </el-menu-item>
 </el-menu>
 </div>
