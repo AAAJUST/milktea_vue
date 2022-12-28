@@ -154,6 +154,9 @@ export default {
         },
         toAllGoods(){
             this.$router.push('/allGoods')
+            setTimeout(function () {
+                window.location.reload();
+            }, 10);
         },
         queryDanpin(st){
             this.routerevent('/danpin','查看单品',st)

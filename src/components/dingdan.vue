@@ -1,5 +1,6 @@
 <template>
   <div class="father">
+    <el-button icon="el-icon-back" @click="goback()"></el-button>
     <div class="cards">
 
         <el-dialog
@@ -122,6 +123,12 @@ export default {
             })
 
             this.dialogVisible = true
+          },
+          goback(){
+            this.$router.push("/frontindex")
+            setTimeout(function () {
+                window.location.reload();
+            }, 10);
           }
         }
 }
