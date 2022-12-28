@@ -25,12 +25,12 @@
             <el-carousel-item  >
                 <h3 class="medium"><img :src="getImage(form.img)"/></h3>
          </el-carousel-item>
-         <el-carousel-item  >
+         <!-- <el-carousel-item  >
                 <h3 class="medium"><img :src="getImage(form.img)"/></h3>
          </el-carousel-item>
          <el-carousel-item  >
                 <h3 class="medium"><img :src="getImage(form.img)"/></h3>
-         </el-carousel-item>
+         </el-carousel-item> -->
          </el-carousel> 
         </div>
             <!-- <img src="@/imge/danpinimg/cup-dark.png" v-show="userShow" alt="Blvck"/>
@@ -66,9 +66,8 @@
         <!-- 购买 -->
         <div class="links">
             <a href="#" class="main-link">
-                <span>现在购买！！</span>
+                <span>加入购物车！！</span>
             </a>
-            <a href="#" >Credit</a>
         </div>
            <!-- 图片预览框 -->
     <div class="img_view" >

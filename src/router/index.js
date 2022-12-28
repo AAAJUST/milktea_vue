@@ -70,6 +70,11 @@ export default new VueRouter({
                     component:() =>
                         import ('../page/employee/employee.vue'),
                 },
+                {
+                     path:'view',
+                    component:()=>
+                    import("../page/Goods/view.vue")
+                    }
             ]  
         },
         {
@@ -104,6 +109,6 @@ export default new VueRouter({
         path:'/danpin',
         component: () =>
         import ("../page/Goods/danpin.vue")
-        }
+        },
       ]
     })

@@ -21,7 +21,7 @@
   </el-menu-item>
   <el-menu-item index="4">
     <i class="el-icon-setting"></i>
-    <span slot="title"></span>
+    <input slot="title" type="button" @click="addFoodtype('/index/view')" value="数据可视化">
   </el-menu-item>
 </el-menu>
 </div>
@@ -34,12 +34,15 @@
       <span>{{getnavname()}}</span>
     </div>
   <router-view></router-view>
+  <div>
+    <div id="echarts" style="width:600px;height:400px"></div>
+</div>
 </div>
 </div>
 </template>
 
 <script>
- 
+import * as echarts from 'echarts'
   export default {
     name:"leftNav",
     data() {
@@ -69,6 +72,27 @@
       },
       getnavfalse(){
         return this.$store.state.goBackFlag
+      },
+      mcharts(){
+        const myChart = echarts.init(document.getElementById('echarts'));
+        const option = {
+            title: {
+              text:'饮品可视化销售单'
+            },
+            tooltip:{},
+            xAxis:{ //x轴下标
+                data:["奶茶","咖啡","乳茶"]
+            },
+            yAxis:{
+                type:'value'
+            },
+            series:[{
+              name:'销量',
+              type:'line',
+              data:[20,5,20]
+            }]
+        };
+        myChart.setOption(option)
       }
     }
   }
@@ -83,7 +107,7 @@
     width: calc(100% - 230px);
     height: 100%;
     float: right;
-    background-color: aqua;
+    background-color: white;
     padding: 20px;
   }
   #container{
