@@ -3,7 +3,7 @@
   <el-row>
   <el-col :span="8" v-for="(good, index) in carddata" :key="index">
     <el-card :body-style="{ padding: '0px' }">
-      <img :src="getimage(good.img)" class="image">
+      <img :src="getimage(good.img)" class="image" style="width:500px;height: 300px;">
       <div style="padding: 14px;">
         <span style="font-size:20px">{{good.name}}</span>
         <span style="float: right;">￥：{{good.price}}</span>

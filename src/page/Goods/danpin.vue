@@ -2,8 +2,7 @@
     <header>
         <nav>
             <a href="#" class="brand">
-                <span>9</span>
-                GRIDS.
+                <span style="padding-right:5px">GO</span>BACK
             </a>
             <div class="toggle">
                 <i class="far fa-moon" round @click="changeDrake()"><img src="@/imge/danpinimg/light.png"/></i>
@@ -68,6 +67,9 @@
             <a href="#" class="main-link">
                 <span>加入购物车！！</span>
             </a>
+            <a>
+                <span>我的购物车</span>
+            </a>
         </div>
            <!-- 图片预览框 -->
     <div class="img_view" >
@@ -87,9 +89,9 @@
     
     <h1 class="background-text">
         <span class="toggle-text">
-            衔尾蛇
+                {{form.name}}
         </span><br/>
-        耶梦加得
+        {{form.name}}
     </h1>
     </header>
     
